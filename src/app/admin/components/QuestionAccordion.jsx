@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useState, useEffect } from "react";
 
 export default function QuestionAccordion({ token, setError }) {
   const [questions, setQuestions] = useState({});
@@ -40,12 +40,20 @@ export default function QuestionAccordion({ token, setError }) {
   return (
     <Accordion type="single" collapsible className="w-full">
       {Object.entries(questions).map(([part, qs]) => (
-        <AccordionItem key={part} value={part}>
-          <AccordionTrigger>{part.toUpperCase()} Questions</AccordionTrigger>
-          <AccordionContent>
+        <AccordionItem
+          key={part}
+          value={part}
+          className="border-b border-indigo-200"
+        >
+          <AccordionTrigger className="text-lg font-semibold text-indigo-700 hover:bg-indigo-50 p-2 rounded">
+            {part.toUpperCase()} Questions
+          </AccordionTrigger>
+          <AccordionContent className="bg-indigo-50 p-4 rounded">
             <ul className="list-disc pl-5 space-y-2">
               {qs.map((q, index) => (
-                <li key={index}>{q}</li>
+                <li key={index} className="text-gray-700">
+                  {q}
+                </li>
               ))}
             </ul>
           </AccordionContent>
