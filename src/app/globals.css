@@ -3,26 +3,39 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-gray-800;
+    @apply bg-gray-900 text-white min-h-screen overflow-x-hidden;
   }
 }
 
 @layer components {
-  .card-custom {
-    @apply bg-white/90 backdrop-blur-md shadow-lg rounded-lg p-4;
+  .card-hover {
+    @apply transform hover:scale-105 transition-transform duration-300;
   }
 }
 
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+@media (max-width: 640px) {
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+  .max-w-3xl {
+    max-width: 100%;
+  }
+  .p-4 {
+    padding: 1rem;
+  }
+  .text-4xl {
+    font-size: 2rem;
+  }
+  .text-2xl {
+    font-size: 1.5rem;
+  }
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
   }
-  50% {
-    opacity: 0.5;
+  .max-w-3xl {
+    max-width: 90%;
   }
 }
